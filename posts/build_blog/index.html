@@ -10,9 +10,6 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/sphinx_highlight.js"></script>
     <link rel="author" title="About these documents" href="../../about/" />
@@ -61,53 +58,53 @@
              <section id="building-a-blog-with-ablog-github-pages-and-github-actions">
 <h1>Building a blog with ablog, github-pages and github-actions<a class="headerlink" href="#building-a-blog-with-ablog-github-pages-and-github-actions" title="Permalink to this heading">¶</a></h1>
 <ul class="simple">
-<li><p>I had to configure an SSH key to make <code class="code highlight bash docutils literal highlight-bash">ablog deploy</code> work, with the setup described below this will no longer be needed.</p></li>
-<li><p>I can edit the blog and have a preview with <code class="code highlight bash docutils literal highlight-bash">ablog build</code> and <code class="code highlight bash docutils literal highlight-bash">ablog serve</code>. If i am satisfied with result, I can add, commit and push the changes.</p></li>
+<li><p>I had to configure an SSH key to make <code class="code highlight bash docutils literal highlight-bash">ablog<span class="w"> </span>deploy</code> work, with the setup described below this will no longer be needed.</p></li>
+<li><p>I can edit the blog and have a preview with <code class="code highlight bash docutils literal highlight-bash">ablog<span class="w"> </span>build</code> and <code class="code highlight bash docutils literal highlight-bash">ablog<span class="w"> </span>serve</code>. If i am satisfied with result, I can add, commit and push the changes.</p></li>
 <li><p>I separated the source of the website (the files written in rst) and the repository which hosts the website (html files) and connected those with a github actions script called <code class="file docutils literal notranslate"><span class="pre">deploy.yml</span></code>.</p></li>
 <li><p>I added my API-TOKEN to the secrets of the <code class="file docutils literal notranslate"><span class="pre">website</span></code> repository (the repo where I push from) as described <a class="reference external" href="https://github.com/cpina/github-action-push-to-another-repository">here</a>. This is needed for the github actions script called <code class="file docutils literal notranslate"><span class="pre">deploy.yml</span></code></p></li>
 <li><p>The <code class="file docutils literal notranslate"><span class="pre">.nojekyll</span></code> is necessary to have the blog rendered correctly.</p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">github actions script to deploy the website automatically</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy-website</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy-website</span>
 
-<span class="nt">on</span><span class="p">:</span><span class="w"></span>
-<span class="nt">workflow_dispatch</span><span class="p">:</span><span class="w"></span>
-<span class="nt">push</span><span class="p">:</span><span class="w"></span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="nt">workflow_dispatch</span><span class="p">:</span>
+<span class="nt">push</span><span class="p">:</span>
 
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="nt">deploy-website</span><span class="p">:</span><span class="w"></span>
-<span class="w">   </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span><span class="w"></span>
-<span class="w">   </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="nt">deploy-website</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">   </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
 
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python 3.8</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">with</span><span class="p p-Indicator">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.8.6</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up Python 3.8</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v2</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">with</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.8.6</span>
 
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install ablog</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install ablog</span>
 
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build the site</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ablog build</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build the site</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ablog build</span>
 
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create .nojekyll file</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1arp/create-a-file-action@0.2</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">with</span><span class="p p-Indicator">:</span><span class="w"></span>
-<span class="w">         </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;_website&#39;</span><span class="w"></span>
-<span class="w">         </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.nojekyll&#39;</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create .nojekyll file</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1arp/create-a-file-action@0.2</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">with</span><span class="p p-Indicator">:</span>
+<span class="w">         </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;_website&#39;</span>
+<span class="w">         </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;.nojekyll&#39;</span>
 
-<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push to .github.io repository</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpina/github-action-push-to-another-repository@main</span><span class="w"></span>
-<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">API_TOKEN_GITHUB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_TOKEN_GITHUB }}</span><span class="w"></span>
-<span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">source-directory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;_website&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">destination-github-username</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;famosab&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">destination-repository-name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;famosab.github.io&#39;</span><span class="w"></span>
-<span class="w">      </span><span class="nt">user-email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">famke.baeuerle@gmail.com</span><span class="w"></span>
-<span class="w">      </span><span class="nt">target-branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span><span class="w"></span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push to .github.io repository</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cpina/github-action-push-to-another-repository@main</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">env</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="nt">API_TOKEN_GITHUB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.API_TOKEN_GITHUB }}</span>
+<span class="w">      </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">source-directory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;_website&#39;</span>
+<span class="w">      </span><span class="nt">destination-github-username</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;famosab&#39;</span>
+<span class="w">      </span><span class="nt">destination-repository-name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;famosab.github.io&#39;</span>
+<span class="w">      </span><span class="nt">user-email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">famke.baeuerle@gmail.com</span>
+<span class="w">      </span><span class="nt">target-branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">master</span>
 </pre></div>
 </div>
 </div>
@@ -156,16 +153,14 @@
 <ul>
    
 <li id="author">
-  <span
-    >Author:</span
+  <span>Author:</span
   >
    
   <a href="../../blog/author/famke-bauerle/">Famke Bäuerle</a>  
 </li>
     
 <li id="tags">
-  <span
-    >Tag:</span
+  <span>Tag:</span
   >
    
   <a href="../../blog/tag/blog/">blog</a>  
@@ -183,6 +178,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../pandas/"
+      >24 January - Collection of pandas ‘hacks’</a
+    >
+  </li>
+  
   <li>
     <a href="../combine/"
       >09 October - Takeaways from my first conference</a
@@ -238,6 +239,10 @@
   <li class="ablog-cloud ablog-cloud-1">
     <a href="../../blog/tag/conference/">conference</a>
   </li>
+    
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/python/">python</a>
+  </li>
    
 </ul>
 
@@ -246,6 +251,10 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../blog/2023/">2023 (1)</a>
+  </li>
+    
   <li>
     <a href="../../blog/2022/">2022 (3)</a>
   </li>
@@ -270,8 +279,8 @@
       &copy;2022, Famke.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.2.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
       <a href="../../_sources/posts/build_blog.rst.txt"

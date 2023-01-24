@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>The idea of this website &#8212; Personal Blog  documentation</title>
+    <title>Collection of pandas ‘hacks’ &#8212; Personal Blog  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
@@ -55,17 +55,31 @@
           
 
           <div class="body" role="main">
-             <section id="the-idea-of-this-website">
-<h1>The idea of this website<a class="headerlink" href="#the-idea-of-this-website" title="Permalink to this heading">¶</a></h1>
-<p>This blog will serve as a personal archive where I can (publicly) note stuff that I want to remember or that I might find helpful another day. I must admit that this was heavily inspired by <a class="reference external" href="https://samnicholls.net/">Sam Nicholls Blog</a>.</p>
-<p>This post today will teach me how to setup a blog from scratch. This might prove useful for converting some (or all) of the plain html websites that I am currently responsible for:</p>
+             <section id="collection-of-pandas-hacks">
+<h1>Collection of pandas ‘hacks’<a class="headerlink" href="#collection-of-pandas-hacks" title="Permalink to this heading">¶</a></h1>
+<p>I regularly stumble upon the same issues when using pandas. There is a wonderful documentation but I sometimes lack the time to read through all of it. This page is intended to help me remember stuff that I already did.</p>
+<section id="how-to-transform-a-multi-index-dataframe-with-one-column-into-a-table-with-columns-and-rows">
+<h2>How to transform a Multi-Index DataFrame with one column into a table with columns and rows<a class="headerlink" href="#how-to-transform-a-multi-index-dataframe-with-one-column-into-a-table-with-columns-and-rows" title="Permalink to this heading">¶</a></h2>
+<p>If you end up with a table that has two three columns from which you want one as rows, one as columns and the entries, do the following:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.faktor14magazin.de/">Faktor 14 Magazin</a></p></li>
-<li><p><a class="reference external" href="https://www.stud-scicom.de/">StudSciCom Initiative</a></p></li>
-<li><p><a class="reference external" href="https://www.pantoffelnimregen.de/">Pantoffeln im Regen Podcast</a></p></li>
+<li><p>set the index to a Multi-Index with the columns which should turn into the columns and rows</p></li>
+<li><p>sort this index to remove duplicate entries</p></li>
+<li><p>transform it to allow turning into a table</p></li>
+<li><p>stack it to obtain a table</p></li>
+<li><p>if you want you can remove column and index names and keep only level 1 of the Multi-Index to obtain a cleaner table</p></li>
 </ul>
-<p>At first glance I thought that using simple HTML / CSS / JS templates that I only need to adapt and maintain would be enough to host those websites permanently. This is not true. Especially for the now very “blog stlyed” website of Faktor 14 where we need to keep track of all cross-links within the site and also update them by hand. This is a really tideous task that I want to automate.</p>
-<p>However all of these websites are up and running with designs that I quite like. So the first taks after publishing this first post will be to customize this blog and see how the <code class="file docutils literal notranslate"><span class="pre">_templates</span></code> directory works in doing so. All of this must also be teachable to others since I plan to collaborate (more) on the stuff that is published to the above mentioned websites.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">pandas</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;colum1&#39;</span><span class="p">,</span><span class="s1">&#39;colum2&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+ <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+ <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+ <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+ <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Graphical representation of what this does:</p>
+</section>
 </section>
 
 <div class="section">
@@ -75,17 +89,13 @@
   <span style="float: left">
      Previous:
     
-    <a href="../build_blog/">
-       Building a blog with ablog, github-pages and github-actions
+    <a href="../combine/">
+       Takeaways from my first conference
     </a>
     
   </span>
   <span>&nbsp;</span>
   <span style="float: right">
-     Next: 
-    <a href="../combine/">
-      Takeaways from my first conference 
-    </a>
     
   </span>
 </div>
@@ -110,7 +120,7 @@
   
 <h2>
    
-  28 April 2022 
+  24 January 2023 
 </h2>
 
 <ul>
@@ -126,7 +136,7 @@
   <span>Tag:</span
   >
    
-  <a href="../../blog/tag/blog/">blog</a>  
+  <a href="../../blog/tag/python/">python</a>  
 </li>
  
 </ul>
@@ -142,14 +152,14 @@
 <ul>
    
   <li>
-    <a href="../pandas/"
-      >24 January - Collection of pandas ‘hacks’</a
+    <a href="../combine/"
+      >09 October - Takeaways from my first conference</a
     >
   </li>
   
   <li>
-    <a href="../combine/"
-      >09 October - Takeaways from my first conference</a
+    <a href="../first_thoughts/"
+      >28 April - The idea of this website</a
     >
   </li>
   
@@ -246,7 +256,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
-      <a href="../../_sources/posts/first_thoughts.rst.txt"
+      <a href="../../_sources/posts/pandas.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
