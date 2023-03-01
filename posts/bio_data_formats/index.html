@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>The idea of this website &#8212; Personal Blog  documentation</title>
+    <title>An overview on biological data formats and databases &#8212; Personal Blog  documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
@@ -55,17 +55,31 @@
           
 
           <div class="body" role="main">
-             <section id="the-idea-of-this-website">
-<h1>The idea of this website<a class="headerlink" href="#the-idea-of-this-website" title="Permalink to this heading">¶</a></h1>
-<p>This blog will serve as a personal archive where I can (publicly) note stuff that I want to remember or that I might find helpful another day. I must admit that this was heavily inspired by <a class="reference external" href="https://samnicholls.net/">Sam Nicholls Blog</a>.</p>
-<p>This post today will teach me how to setup a blog from scratch. This might prove useful for converting some (or all) of the plain html websites that I am currently responsible for:</p>
+             <section id="an-overview-on-biological-data-formats-and-databases">
+<h1>An overview on biological data formats and databases<a class="headerlink" href="#an-overview-on-biological-data-formats-and-databases" title="Permalink to this heading">¶</a></h1>
+<p>Since starting my degree in Bioinformatics I stumbled across so many data formats. Some of them I use regularly, but some are still a little bit misterious to me. So this post is thought as a collection of formats, their use and possible structure mainly for myself. But maybe it is of interest for someone else who might just be as confused as I was.</p>
+<p>First of all: There is a difference between file format and file extension.</p>
+<section id="file-formats">
+<h2>File formats<a class="headerlink" href="#file-formats" title="Permalink to this heading">¶</a></h2>
+<p><strong>FASTA files</strong></p>
+<p>The FASTA format is a text-based format for representing either nucleotide sequences (GATCU) or amino acid (protein) sequences. The FASTA format means that each sequence begins with <cite>&gt;</cite> which is followed by the sequence description in the same line and the sequence itself in the lines below.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.faktor14magazin.de/">Faktor 14 Magazin</a></p></li>
-<li><p><a class="reference external" href="https://www.stud-scicom.de/">StudSciCom Initiative</a></p></li>
-<li><p><a class="reference external" href="https://www.pantoffelnimregen.de/">Pantoffeln im Regen Podcast</a></p></li>
+<li><p><cite>.fas</cite> and <cite>.fa</cite> are common shortenings of <cite>.fasta</cite>. files</p></li>
+<li><p><cite>.fna</cite> is short for  <a href="#id1"><span class="problematic" id="id2">**</span></a>F**ASTA <a href="#id3"><span class="problematic" id="id4">**</span></a>N**ucleic <a href="#id5"><span class="problematic" id="id6">**</span></a>A**cids</p></li>
+<li><p><cite>.faa</cite> is used by the NCBI for <a href="#id7"><span class="problematic" id="id8">**</span></a>F**ASTA <a href="#id9"><span class="problematic" id="id10">**</span></a>A**mino <a href="#id11"><span class="problematic" id="id12">**</span></a>A**cids (protein FASTA file)</p></li>
 </ul>
-<p>At first glance I thought that using simple HTML / CSS / JS templates that I only need to adapt and maintain would be enough to host those websites permanently. This is not true. Especially for the now very “blog stlyed” website of Faktor 14 where we need to keep track of all cross-links within the site and also update them by hand. This is a really tideous task that I want to automate.</p>
-<p>However all of these websites are up and running with designs that I quite like. So the first taks after publishing this first post will be to customize this blog and see how the <code class="file docutils literal notranslate"><span class="pre">_templates</span></code> directory works in doing so. All of this must also be teachable to others since I plan to collaborate (more) on the stuff that is published to the above mentioned websites.</p>
+<p><strong>General Feature format</strong></p>
+<p>The <cite>GFF</cite> format can be used to describe genes and other features of DNA, RNA and protein sequences.</p>
+<p><strong>SBML</strong></p>
+<p>The Systems Biology Markup Language is an XML based format to store computational models of biological processes.</p>
+</section>
+<section id="databases">
+<h2>Databases<a class="headerlink" href="#databases" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>GenBank: Open access sequence database hosted by the NCBI. Contains sequences for any organism submitted.</p></li>
+<li><p>RefSeq: Open access, annotated and curated sequence database hosted by the NCBI. Limited to major organisms for which sufficient data is available.</p></li>
+</ul>
+</section>
 </section>
 
 <div class="section">
@@ -75,16 +89,16 @@
   <span style="float: left">
      Previous:
     
-    <a href="../build_blog/">
-       Building a blog with ablog, github-pages and github-actions
+    <a href="../git/">
+       Collection of git ‘hacks’
     </a>
     
   </span>
   <span>&nbsp;</span>
   <span style="float: right">
      Next: 
-    <a href="../combine/">
-      Takeaways from my first conference 
+    <a href="../python/">
+      Collection of Python ‘hacks’ 
     </a>
     
   </span>
@@ -110,7 +124,7 @@
   
 <h2>
    
-  28 April 2022 
+  17 February 2023 
 </h2>
 
 <ul>
@@ -123,10 +137,11 @@
 </li>
     
 <li id="tags">
-  <span>Tag:</span
+  <span>Tags: </span
   >
    
-  <a href="../../blog/tag/blog/">blog</a>  
+  <a href="../../blog/tag/data/">data</a>   
+  <a href="../../blog/tag/biology/">biology</a>  
 </li>
  
 </ul>
@@ -148,12 +163,6 @@
   </li>
   
   <li>
-    <a href="../bio_data_formats/"
-      >17 February - An overview on biological data formats and databases</a
-    >
-  </li>
-  
-  <li>
     <a href="../git/"
       >10 February - Collection of git ‘hacks’</a
     >
@@ -168,6 +177,12 @@
   <li>
     <a href="../combine/"
       >09 October - Takeaways from my first conference</a
+    >
+  </li>
+  
+  <li>
+    <a href="../first_thoughts/"
+      >28 April - The idea of this website</a
     >
   </li>
   
@@ -266,7 +281,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
       |
-      <a href="../../_sources/posts/first_thoughts.rst.txt"
+      <a href="../../_sources/posts/bio_data_formats.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

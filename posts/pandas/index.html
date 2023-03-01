@@ -69,12 +69,19 @@
 <li><p>if you want you can remove column and index names and keep only level 1 of the Multi-Index to obtain a cleaner table</p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">pandas</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-text">pandas transformation</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;colum1&#39;</span><span class="p">,</span><span class="s1">&#39;colum2&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
  <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
  <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
  <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
  <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Note: If you have a table where you want to transform multiple columns into row entries, take the column headers of the other columns (the ones that you want to keep as columns) and use those to stack the DataFrame into its new format.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">with multiple rows, where group1 and group2 are two columns of six</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;group1&#39;</span><span class="p">,</span> <span class="s1">&#39;group2&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">stack</span><span class="p">())</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -156,6 +163,18 @@
 <ul>
    
   <li>
+    <a href="../python/"
+      >28 February - Collection of Python ‘hacks’</a
+    >
+  </li>
+  
+  <li>
+    <a href="../bio_data_formats/"
+      >17 February - An overview on biological data formats and databases</a
+    >
+  </li>
+  
+  <li>
     <a href="../git/"
       >10 February - Collection of git ‘hacks’</a
     >
@@ -170,12 +189,6 @@
   <li>
     <a href="../first_thoughts/"
       >28 April - The idea of this website</a
-    >
-  </li>
-  
-  <li>
-    <a href="../build_blog/"
-      >28 April - Building a blog with ablog, github-pages and github-actions</a
     >
   </li>
   
@@ -215,12 +228,20 @@
 </style>
 <ul class="ablog-cloud">
    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/biology/">biology</a>
+  </li>
+    
   <li class="ablog-cloud ablog-cloud-5">
     <a href="../../blog/tag/blog/">blog</a>
   </li>
     
   <li class="ablog-cloud ablog-cloud-1">
     <a href="../../blog/tag/conference/">conference</a>
+  </li>
+    
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/data/">data</a>
   </li>
     
   <li class="ablog-cloud ablog-cloud-3">
@@ -235,7 +256,7 @@
 <ul>
    
   <li>
-    <a href="../../blog/2023/">2023 (2)</a>
+    <a href="../../blog/2023/">2023 (4)</a>
   </li>
     
   <li>
